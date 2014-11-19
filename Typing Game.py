@@ -1,5 +1,8 @@
 import random
 from Tkinter import *
+root = Tk()
+
+drawpad = Canvas(root, width=800,height=600, background='white')
 
 class MyApp:
 	def __init__(self, parent):
@@ -86,13 +89,16 @@ class MyApp:
 
 
                 self.labelList = [self.label1,self.label2,self.label3,self.label4,self.label5,self.label6,self.label7,self.label8,self.label9,self.label10,self.label11,self.label12,self.label13,self.label14,self.label15,self.label16,self.label17,self.label18,self.label19,self.label20,self.label21,self.label22,self.label23,self.label24,self.label25,self.label26,]
+                self.loop()
 
-
+                root.bind_all('<Key>', self.key)
+        def loop(self):
+                global drawpad
                 self.L = random.randint(0,25)
                 self.labelList[self.L].configure(bg = "Green")
                 self.currentLetter = self.labelList[self.L]
-                root.bind_all('<Key>', self.key)
-
+            
+                drawpad.after(1000,self.loop)
 
         def key(self,event):
 
@@ -201,6 +207,7 @@ class MyApp:
                         self.labelList[25].configure(bg = "Red")
                         print "z Worked"                           
 
+        
 
 
 
@@ -208,7 +215,5 @@ class MyApp:
 
 
 
-
-root = Tk()
 myapp = MyApp(root)
 root.mainloop()
