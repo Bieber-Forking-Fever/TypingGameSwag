@@ -3,7 +3,8 @@ from Tkinter import *
 root = Tk()
 
 drawpad = Canvas(root, width=800,height=600, background='white')
-
+alreadywon = False
+speed = 1500
 class MyApp:
 	def __init__(self, parent):
 		self.myContainer1 = Frame(parent)
@@ -101,225 +102,309 @@ class MyApp:
                 root.bind_all('<Key>', self.key)
         def loop(self):
                 global drawpad
+                global alreadywon
+                global speed
+                if alreadywon == False:
+                    self.score = self.score - 10
+                    self.scoreTxt.configure(text=self.score)
+                alreadywon = False
                 for x in self.labelList:
                     x.configure(bg = "Red")
                 self.L = random.randint(0,25)
                 self.labelList[self.L].configure(bg = "Green")
                 self.currentLetter = self.labelList[self.L]
-                    
-                drawpad.after(1500,self.loop)
+                speed = speed - 50
+                if speed < 700:
+                    speed = speed + 50
+                drawpad.after(speed,self.loop)
                 
 
         def key(self,event):
+                global alreadywon
 
                 if event.char == "a":
                     if self.currentLetter == self.labelList[0]:
-                        self.labelList[0].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
+                        if alreadywon == False:
+                            self.labelList[0].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
                     else:
                         self.score = self.score - 10
                         self.scoreTxt.configure(text=self.score)
+
                 if event.char == "b":
                     if self.currentLetter == self.labelList[1]:
-                        self.labelList[1].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
+                        if alreadywon == False:
+                            self.labelList[1].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
                     else:
                         self.score = self.score - 10
                         self.scoreTxt.configure(text=self.score)
+
                 if event.char == "c":
-                    if self.currentLetter == self.labelList[2]:
-                        self.labelList[2].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)
+                        if alreadywon == False:
+                            self.labelList[2].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+
                 if event.char == "d":
-                    if self.currentLetter == self.labelList[3]:
-                        self.labelList[3].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10 
-                        self.scoreTxt.configure(text=self.score)                 
+                        if alreadywon == False:
+                            self.labelList[3].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                
                 if event.char == "e":
                     if self.currentLetter == self.labelList[4]:
-                        self.labelList[4].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10 
-                        self.scoreTxt.configure(text=self.score)                  
+                        if alreadywon == False:
+                            self.labelList[4].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score) 
+                 
                 if event.char == "f":
                     if self.currentLetter == self.labelList[5]:
-                        self.labelList[5].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10 
-                        self.scoreTxt.configure(text=self.score)                  
+                        if alreadywon == False:
+                            self.labelList[5].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                 
                 if event.char == "g":
                     if self.currentLetter == self.labelList[6]:
-                        self.labelList[6].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10 
-                        self.scoreTxt.configure(text=self.score)                
+                        if alreadywon == False:
+                            self.labelList[6].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+               
                 if event.char == "h":
                     if self.currentLetter == self.labelList[7]:
-                        self.labelList[7].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                   
+                        if alreadywon == False:
+                            self.labelList[7].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                  
                 if event.char == "i":
                     if self.currentLetter == self.labelList[8]:
-                        self.labelList[8].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                  
+                        if alreadywon == False:
+                            self.labelList[8].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+
                 if event.char == "j":
                     if self.currentLetter == self.labelList[9]:
-                        self.labelList[9].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                             
+                        if alreadywon == False:
+                            self.labelList[9].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                            
                 if event.char == "k":
                     if self.currentLetter == self.labelList[10]:
-                        self.labelList[10].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                             
+                        if alreadywon == False:
+                            self.labelList[10].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                            
                 if event.char == "l":
                     if self.currentLetter == self.labelList[11]:
-                        self.labelList[11].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                             
+                        if alreadywon == False:
+                            self.labelList[11].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                            
                 if event.char == "m":
                     if self.currentLetter == self.labelList[12]:
-                        self.labelList[12].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                              
+                        if alreadywon == False:
+                            self.labelList[12].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score) 
+                             
                 if event.char == "n":
                     if self.currentLetter == self.labelList[13]:
-                        self.labelList[13].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                             
+                        if alreadywon == False:
+                            self.labelList[13].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                            
                 if event.char == "o":
                     if self.currentLetter == self.labelList[14]:
-                        self.labelList[14].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                             
+                        if alreadywon == False:
+                            self.labelList[14].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score) 
+                            
                 if event.char == "p":
                     if self.currentLetter == self.labelList[15]:
-                        self.labelList[15].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                          
+                        if alreadywon == False:
+                            self.labelList[15].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                         
                 if event.char == "q":
                     if self.currentLetter == self.labelList[16]:
-                        self.labelList[16].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                             
+                        if alreadywon == False:
+                            self.labelList[16].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score) 
+                            
                 if event.char == "r":
                     if self.currentLetter == self.labelList[17]:
-                        self.labelList[17].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10  
-                        self.scoreTxt.configure(text=self.score)                            
+                        if alreadywon == False:
+                            self.labelList[17].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score) 
+                           
                 if event.char == "s":
                     if self.currentLetter == self.labelList[18]:
-                        self.labelList[18].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                              
+                        if alreadywon == False:
+                            self.labelList[18].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                             
                 if event.char == "t":
                     if self.currentLetter == self.labelList[19]:
-                        self.labelList[19].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                              
+                        if alreadywon == False:
+                            self.labelList[19].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score) 
+                             
                 if event.char == "u":
                     if self.currentLetter == self.labelList[20]:
-                        self.labelList[20].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10 
-                        self.scoreTxt.configure(text=self.score)                              
+                        if alreadywon == False:
+                            self.labelList[20].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score) 
+                             
                 if event.char == "v":
                     if self.currentLetter == self.labelList[21]:
-                        self.labelList[21].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                               
+                        if alreadywon == False:
+                            self.labelList[21].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score) 
+                              
                 if event.char == "w":
                     if self.currentLetter == self.labelList[22]:
-                        self.labelList[22].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10 
-                        self.scoreTxt.configure(text=self.score)                           
+                        if alreadywon == False:
+                            self.labelList[22].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                          
                 if event.char == "x":
                     if self.currentLetter == self.labelList[23]:
-                        self.labelList[23].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10 
-                        self.scoreTxt.configure(text=self.score)                            
+                        if alreadywon == False:
+                            self.labelList[23].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                           
                 if event.char == "y":
                     if self.currentLetter == self.labelList[24]:
-                        self.labelList[24].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10 
-                        self.scoreTxt.configure(text=self.score)                             
+                        if alreadywon == False:
+                            self.labelList[24].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)
+                            
                 if event.char == "z":
                     if self.currentLetter == self.labelList[25]:
-                        self.labelList[25].configure(bg = "Red")
-                        self.score = self.score + 10
-                        self.scoreTxt.configure(text=self.score)
-                    else:
-                        self.score = self.score - 10
-                        self.scoreTxt.configure(text=self.score)                          
+                        if alreadywon == False:
+                            self.labelList[25].configure(bg = "Red")
+                            self.score = self.score + 10
+                            self.scoreTxt.configure(text=self.score)
+                            alreadywon = True
+                        else:
+                            self.score = self.score - 10
+                            self.scoreTxt.configure(text=self.score)                        
 
         
 
