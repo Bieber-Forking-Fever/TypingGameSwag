@@ -113,9 +113,9 @@ class MyApp:
                 self.L = random.randint(0,25)
                 self.labelList[self.L].configure(bg = "Green")
                 self.currentLetter = self.labelList[self.L]
-                speed = speed - 50
-                if speed < 700:
-                    speed = speed + 50
+                speed = speed - 30
+                if speed < 670:
+                    speed = speed + 30
                 drawpad.after(speed,self.loop)
                 
 
